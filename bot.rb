@@ -4,6 +4,37 @@ include Facebook::Messenger
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
+Facebook::Messenger::Thread.set({
+	setting_type: 'greeting',
+	greeting: {
+		text: 'Welcome to Cachebot. Send me a URL to update its Facebook info.'
+	},
+}, access_token: ENV['ACCESS_TOKEN'])
+
+Facebook::Messenger::Thread.set({
+	setting_type: 'call_to_actions',
+	thread_state: 'new_thread',
+	call_to_actions: [
+		{
+			payload: 'START'
+		}
+	]
+}, access_token: ENV['ACCESS_TOKEN'])
+
+Bot.on :postback do |postback|
+
+	if postback.payload == "START"
+		
+		message_options = {
+			recipient: { id: sender_id = postback.sender['id'] },
+			message: { text: 'Welcome to Cachebot. Send me a URL to update its Facebook info.' }
+		}
+		Bot.deliver(message_options, access_token: ENV['ACCESS_TOKEN'])
+
+	end
+end
+
+
 Bot.on :message do |message|
 	# message.mark_seen
 	# message.typing_on
