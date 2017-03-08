@@ -23,7 +23,9 @@ Bot.on :message do |message|
 			message.type
 		end
 
-		if message_text =~ URI.regexp
+		if message_text.downcase == 'hi' || message_text.downcase == 'hello' || message_text.downcase == 'hey'
+			message.reply(text: "Hey there. Send me a URL to update its Facebook info.")
+		elsif message_text =~ URI.regexp
 			# update
 			fb_update_successful = facebook_update(message_text)
 			if fb_update_successful
@@ -35,7 +37,7 @@ Bot.on :message do |message|
 			# request http
 			message.reply(text: 'Please make sure your URL starts with http or https.')
 		else
-			message.reply(text: 'Please enter a URL.')
+			message.reply(text: 'Send me a URL to update its Facebook info.')
 		end
 
 	rescue => error
