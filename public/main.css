@@ -1,0 +1,125 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Cachebot */
+
+body {
+	font: 16px/1.2em 'Asap', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+header {
+	font-family: 'BioRhyme', serif;
+	color: #fff;
+	background-color: #509ed6;
+	background-image: -webkit-gradient(linear, left bottom, right top, from(rgb(80, 158, 214)), to(rgb(0, 105, 182)));
+	background-image: -webkit-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -moz-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -o-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -ms-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#509ed6', EndColorStr='#0069b6');
+	padding: 20px 0;
+}
+
+h1 {
+	font-size: 40px;
+	line-height: 1em;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 22px;
+	line-height: 1.2em;
+}
+
+.wrap {
+	max-width: 750px;
+	padding: 20px 5%;
+	margin: 0 auto;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+img {
+	width: 100%;
+}
+
+.col33 {
+	width: 100%;
+	float: none;
+}
+
+.col33 img {
+	margin-top: 10px;
+}
+
+
+@media(min-width: 750px) {
+	.col33 {
+		width: 31%;
+		margin-left: 2%;
+		float: left;
+	}
+	.col33:first-child {
+		margin-left: 0;
+	}
+	.col33:nth-child(2) {
+		margin-top: 100px;
+	}
+	.col33:last-child {
+		margin-top: 200px;
+	}
+}

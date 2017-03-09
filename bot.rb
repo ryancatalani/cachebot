@@ -67,7 +67,8 @@ Bot.on :message do |message|
 			# update
 			fb_update_successful = facebook_update(message_text)
 			if fb_update_successful
-				message.reply(text: "Successfully updated Facebook info for #{fb_update_successful}")
+				message.reply(text: "Successfully updated Facebook info.")
+				message.reply(attachment: fb_update_successful)
 			else
 				message.reply(text: REPLIES[:oops])
 			end
@@ -99,11 +100,30 @@ def facebook_update(url)
 	if response.code == 200
 		body = JSON.parse(response.body)
 		title = body["title"]
-		if !title.nil?
-			return "your page: #{title}."
-		else
-			return "your page."
-		end
+		subtitle = body["description"]
+		image_url = body["image"][0]["url"] rescue nil
+		parsed_url = body["url"]
+		host = URI.parse(parsed_url).host rescue nil
+
+		element = {}
+		element[:title] = title if !title.nil?
+		element[:subtitle] = subtitle if !subtitle.nil?
+		element[:image_url] = image_url if !image_url.nil?
+		element[:default_action] = {
+			type: 'web_url',
+			url: parsed_url
+		}
+
+		attachment = {
+			type: 'template',
+			payload: {
+				template_type: 'generic',
+				elements: [ element ]
+			}
+		}
+
+		return attachment
+
 	else
 		return false
 	end

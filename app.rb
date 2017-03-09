@@ -5,5 +5,5 @@ get '/' do
 		return params['hub.challenge']
 	end
 
-	"Hello Cachebot"
+	erb :index
 end
