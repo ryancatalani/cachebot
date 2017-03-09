@@ -81,6 +81,11 @@ h2 {
 	line-height: 1.2em;
 }
 
+.wrap h2 {
+	font-family: 'BioRhyme', serif;
+	margin-bottom: 10px;
+}
+
 h3 {
 	font: 20px/1em 'BioRhyme', serif;
 }
