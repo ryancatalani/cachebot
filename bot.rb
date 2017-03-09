@@ -2,12 +2,19 @@ require 'httparty'
 require 'uri'
 include Facebook::Messenger
 
+REPLIES = {
+	welcome: 'Welcome to Cachebot. Send me a URL to update its Facebook link preview.',
+	desc: 'Send me a URL to update its Facebook link preview.',
+	oops: 'Oops, something went wrong. Please try again.'
+}
+
+
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
 Facebook::Messenger::Thread.set({
 	setting_type: 'greeting',
 	greeting: {
-		text: 'Welcome to Cachebot. Send me a URL to update its Facebook info.'
+		text: REPLIES[:welcome]
 	},
 }, access_token: ENV['ACCESS_TOKEN'])
 
@@ -27,7 +34,7 @@ Bot.on :postback do |postback|
 		
 		message_options = {
 			recipient: { id: sender_id = postback.sender['id'] },
-			message: { text: 'Welcome to Cachebot. Send me a URL to update its Facebook info.' }
+			message: { text: REPLIES[:welcome] }
 		}
 		Bot.deliver(message_options, access_token: ENV['ACCESS_TOKEN'])
 
@@ -55,26 +62,26 @@ Bot.on :message do |message|
 		end
 
 		if message_text.downcase == 'hi' || message_text.downcase == 'hello' || message_text.downcase == 'hey'
-			message.reply(text: "Hey there. Send me a URL to update its Facebook info.")
+			message.reply(text: "Hey there. #{REPLIES[:desc]}")
 		elsif message_text =~ URI.regexp
 			# update
 			fb_update_successful = facebook_update(message_text)
 			if fb_update_successful
 				message.reply(text: "Successfully updated Facebook info for #{fb_update_successful}")
 			else
-				message.reply(text: "Oops, something went wrong. Please try again.")
+				message.reply(text: REPLIES[:oops])
 			end
 		elsif message_text =~ http_less_url
 			# request http
 			message.reply(text: 'Please make sure your URL starts with http or https.')
 		else
-			message.reply(text: 'Send me a URL to update its Facebook info.')
+			message.reply(text: REPLIES[:desc])
 		end
 
 	rescue => error
 
 		p error
-		message.reply(text: "Oops, something went wrong. Please try again.")
+		message.reply(text: REPLIES[:oops])
 
 	end
 
