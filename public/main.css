@@ -53,7 +53,7 @@ table {
 /* Cachebot */
 
 body {
-	font: 16px/1.2em 'Asap', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font: 16px/1.3em 'Asap', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -81,10 +81,26 @@ h2 {
 	line-height: 1.2em;
 }
 
+h3 {
+	font: 20px/1em 'BioRhyme', serif;
+}
+
 .wrap {
 	max-width: 750px;
 	padding: 20px 5%;
 	margin: 0 auto;
+}
+
+.wrap a:link, .wrap a:visited {
+	color: #0069b6;
+	text-decoration: none;
+	border-bottom: 1px dashed #0069b6;
+}
+
+.wrap a:hover, .wrap a:active {
+	color: #C81F25;
+	border-bottom-color: #C81F25;
+	cursor: pointer;
 }
 
 .row:after {
@@ -100,6 +116,7 @@ img {
 .col33 {
 	width: 100%;
 	float: none;
+	margin-bottom: 20px;
 }
 
 .col33 img {
@@ -122,4 +139,78 @@ img {
 	.col33:last-child {
 		margin-top: 200px;
 	}
+}
+
+.cachebot_preview {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background: #fff;
+	padding: 5px;
+	margin-top: 20px;
+}
+
+.cachebot_outer {
+	background: #509ed6;
+	color: #fff;
+	padding: 40px 5%;
+	border-radius: 5px;
+}
+
+footer {
+	background: #eee;
+	margin-top: 50px;
+	padding-bottom: 100px;
+}
+
+.floating_chat {
+	position: fixed;
+	bottom: 20px;
+	right: 10px;
+	z-index: 10;
+}
+
+a.messenger_btn:link, a.messenger_btn:visited {
+	display: block;
+	font-size: 20px;
+	line-height: 1em;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid rgba(255,255,255,0.7);
+	background-color: #509ed6;
+	background-image: -webkit-gradient(linear, left bottom, right top, from(rgb(80, 158, 214)), to(rgb(0, 105, 182)));
+	background-image: -webkit-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -moz-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -o-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: -ms-linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	background-image: linear-gradient(left bottom, rgb(80, 158, 214), rgb(0, 105, 182));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#509ed6', EndColorStr='#0069b6');	
+	-webkit-box-shadow: 0px 0px 100px 10px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 0px 100px 10px rgba(0,0,0,0.4);
+	box-shadow: 0px 0px 100px 10px rgba(0,0,0,0.4);
+}
+
+a.messenger_btn:hover, a.messenger_btn:active {
+	cursor: pointer;
+	background-color: #48acf4;
+	background-image: -webkit-gradient(linear, left bottom, right top, from(rgb(72, 172, 244)), to(rgb(80, 158, 214)));
+	background-image: -webkit-linear-gradient(left bottom, rgb(72, 172, 244), rgb(80, 158, 214));
+	background-image: -moz-linear-gradient(left bottom, rgb(72, 172, 244), rgb(80, 158, 214));
+	background-image: -o-linear-gradient(left bottom, rgb(72, 172, 244), rgb(80, 158, 214));
+	background-image: -ms-linear-gradient(left bottom, rgb(72, 172, 244), rgb(80, 158, 214));
+	background-image: linear-gradient(left bottom, rgb(72, 172, 244), rgb(80, 158, 214));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#48acf4', EndColorStr='#509ed6');
+	
+}
+
+a.top_messenger_btn:link, a.top_messenger_btn:hover {
+	display: inline-block;
+	background: #fff;
+	font: 14px/1.3em 'Asap', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #509ed6;
+	border: none;
+	margin-top: 20px;
 }
