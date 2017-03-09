@@ -20,6 +20,8 @@ Start a local server with `rackup` and open a tunnel with [ngrok](https://ngrok.
 
 If everything's working, you can deploy this to Heroku and update the callback URL.
 
+If you want to use Google Analytics, set the `GA_TRACKING` environment variable to your Google Analytics tracking ID.
+
 ## License: MIT
 
 Copyright 2017 Ryan Catalani
