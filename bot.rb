@@ -65,12 +65,13 @@ Bot.on :message do |message|
 			message.reply(text: "Hey there. #{REPLIES[:desc]}")
 		elsif message_text =~ URI.regexp
 			# update
-			fb_update_successful = facebook_update(message_text)
-			if fb_update_successful
+			fb_update_response = facebook_update(message_text)
+
+			if fb_update_response[:attachment_returned]
 				message.reply(text: "Successfully updated Facebook info.")
-				message.reply(attachment: fb_update_successful)
+				message.reply(attachment: fb_update_response[:attachment])
 			else
-				message.reply(text: REPLIES[:oops])
+				message.reply(text: fb_update_response[:text])
 			end
 		elsif message_text =~ http_less_url
 			# request http
@@ -122,10 +123,28 @@ def facebook_update(url)
 			}
 		}
 
-		return attachment
+		return {
+			attachment_returned: true,
+			attachment: attachment
+		}
 
+	elsif !response["error"].nil? && !response["error"]["error_user_title"].nil? && response["error"]["error_user_title"] == "Object Invalid Value"
+		response_text = "It looks like the Facebook info was successfully updated, but there may be a technical error on the page"
+		if !response["error"]["error_user_msg"].nil?
+			response_text += ' ('
+			response_text += response["error"]["error_user_msg"]
+			response_text += ')'
+		end
+		response_text += '.'
+		return {
+			attachment_returned: false,
+			text: response_text
+		}
 	else
-		return false
+		return {
+			attachment_returned: false,
+			text: REPLIES[:oops]
+		}
 	end
 
 end
