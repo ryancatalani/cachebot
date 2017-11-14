@@ -95,7 +95,7 @@ def facebook_update(url)
 
 	# https://developers.facebook.com/docs/sharing/opengraph/using-objects
 	escaped_url = URI.escape(url)
-	fb_url = "https://graph.facebook.com/?id=#{escaped_url}&scrape=true"
+	fb_url = "https://graph.facebook.com/?id=#{escaped_url}&scrape=true&access_token=#{ENV['ACCESS_TOKEN']}"
 	response = HTTParty.post(fb_url)
 
 	if response.code == 200
